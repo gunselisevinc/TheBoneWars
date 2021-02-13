@@ -43,4 +43,13 @@ Trap | Bad News! | 1 | T
 
 After the resources have been positioned, the game proceeds in a series of rounds. In each round, each player takes a turn to announce a target cell in the grid. The computer then announces the outcome of the random numbers and the actions to be followed. The grid is then updated accordingly.
 
+## Implementation Details
+A base abstract class "Resources" is created which has member variables for size and representing character. There are five sub-classes of resources (trap included) for five distinct types (Food and bones are further divided, but you are free in implementing these). The resources gathered by each player are held in a structure. In each turn, the structure used to keep the resources is traversed to calculate the total score, energy and current condition (is the player hurt from the trap and in need for medical attention or not). For each three Food items in the structure, the energy can be increased one point in each round since the archaeologist with a good diet would develop a stronger immune system to survive. An "Archeologist" class is created for each player. Each player has list of gathered resources. A "Grid" class is created, which is associated with the most up to date state of the island. Each player object has access to the same grid object.
 
+### Deployment of Resources
+The deploy_resources function of the grid will randomly deploy resources at the beginning of the game. The resources may be placed vertically, horizontally or diagonally.
+
+### Gathering
+Each player is gathered in turns. Before and after the choosing the coordinates, the last version of grids is shown. The program doesn't allow the players to gather from the same coordinates more than once.
+
+If one of the player collects more than half of the available bone scores, the game ends and the program shows the winner and looser with the details of the resources gathered.
